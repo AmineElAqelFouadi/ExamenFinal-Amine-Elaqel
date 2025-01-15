@@ -21,7 +21,7 @@ export const getEstadisticas = async (req, res) => {
         if (tipoEvento) filters.tipoEvento = tipoEvento;
 
         const estadisticas = await estadisticaModel.find(filters);
-        res.json(estadisticas); // Asegúrate de que la respuesta sea en formato JSON
+        res.status(200).json(estadisticas || []);// Asegúrate de que la respuesta sea en formato JSON
     } catch (error) {
         res.status(400).send(error);
     }

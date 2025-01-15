@@ -22,6 +22,8 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
+app.use('/api/estadisticas', estadisticaRouter);
+
 // Rutes 
 app.use('/users', usersRouter);
 app.use('/coins', coinsRouter);
