@@ -11,8 +11,7 @@ import { news } from './news/news.model.js';
 import { newsModel } from './news/news.model.js';
 import { mediaRouter } from './media/media.routes.js';
 import { mediaModel, media } from './media/media.model.js';
-
-
+import { estadisticaRouter } from './stati/estadistica.routes.js';
 await mongoose.connect('mongodb://localhost:27017/myproject');
 
 const app = express();
@@ -28,6 +27,7 @@ app.use('/users', usersRouter);
 app.use('/coins', coinsRouter);
 app.use('/news', newsRouter);
 app.use('/media', mediaRouter);
+app.use('/estadistica', estadisticaRouter);
 
 // Inicialitzar les notícies
 async function initializeNews() {
