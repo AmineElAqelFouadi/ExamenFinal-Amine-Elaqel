@@ -31,7 +31,7 @@ export const getUltimosEventos = async (req, res) => {
     try {
         const { fechaInicio, fechaFinal, sitioEvento, tipoEvento } = req.query;
         const filters = {};
-
+        // mab aqtss forma de if directament podem ja filtrar
         if (fechaInicio) filters.createdAt = { $gte: new Date(fechaInicio) };
         if (fechaFinal) filters.createdAt = { ...filters.createdAt, $lte: new Date(fechaFinal) };
         if (sitioEvento) filters.sitioEvento = sitioEvento;
