@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { NewsService } from "../services/news.service";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { EstadisticasService } from '../services/estadisticas.service';
 import  {WalletService} from '../services/wallet.service';
 @Component({
   selector: 'app-news',
@@ -25,7 +25,7 @@ export class NewsComponent {
   editNewsItem: any = null;
 
   private newsService = inject(NewsService);
-
+  private estadisticasService = inject(EstadisticasService);
   private walletService = inject(WalletService);
   userId: string | null = null;
   private intervalId: any;
@@ -33,6 +33,7 @@ export class NewsComponent {
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
+    this.registrarVisita('ultimesnoticies');
     this.newsService.getNews().subscribe((data: any[]) => {
       this.news = data;
       this.filteredNews = data;
@@ -66,6 +67,7 @@ export class NewsComponent {
       this.newBody = '';
       this.newCategory = [];
       this.showForm = false;
+      this.registrarClick('click-submit-news');
     });
   }
 
@@ -120,5 +122,17 @@ export class NewsComponent {
     this.newTitle = '';
     this.newBody = '';
     this.newCategory = [];
+  }
+
+  registrarVisita(sitioEvento: string) {
+    this.estadisticasService.registrarVisita(this.sessionId, this.userId, sitioEvento).subscribe(response => {
+      console.log('Visita registrada:', response);
+    });
+  }
+
+  registrarClick(sitioEvento: string) {
+    this.estadisticasService.registrarClick(this.sessionId, this.userId, sitioEvento).subscribe(response => {
+      console.log('Click registrado:', response);
+    });
   }
 }
