@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { EstadisticasService } from '../services/estadisticas.service';
 
 @Component({
   selector: 'app-inici',
@@ -9,5 +10,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './inici.component.css'
 })
 export class IniciComponent {
+  private estadisticasService = inject(EstadisticasService);
 
+  ngOnInit() {
+    // Registrar acceso a la sección de inicio
+    this.estadisticasService.registrarVisita('inicio').subscribe();
+  }
 }

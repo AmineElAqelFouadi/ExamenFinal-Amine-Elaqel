@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { WalletService } from '../services/wallet.service';
 import { CryptoWalletService } from '../services/cyrptowallet.service';
+import { EstadisticasService } from '../services/estadisticas.service';
 
 @Component({
   selector: 'app-wallet',
@@ -28,11 +29,15 @@ export class WalletComponent {
   // Inyección de servicios
   private walletService = inject(WalletService);
   private cryptoWalletService = inject(CryptoWalletService);
+  private estadisticasService = inject(EstadisticasService);
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
     this.showLoadingBar();
     setTimeout(() => this.hideLoadingBar(), 150);
+
+    // Registrar acceso a la sección de wallet
+    this.estadisticasService.registrarVisita('wallet').subscribe();
 
     if (this.userId) {
       this.intervalId = setInterval(() => {

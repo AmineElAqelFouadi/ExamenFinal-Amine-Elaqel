@@ -102,6 +102,7 @@ export class NewsComponent {
       this.newsService.deleteNews(newsId).subscribe(() => {
         this.news = this.news.filter(newsItem => newsItem._id !== newsId);
         this.filterNews(); // Filtrar noticias después de eliminar una
+        this.registrarClick('click-delete-news')
       });
     }
   }
