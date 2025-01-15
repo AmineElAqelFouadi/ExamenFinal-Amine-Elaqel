@@ -67,7 +67,7 @@ export class NewsComponent {
       this.newBody = '';
       this.newCategory = [];
       this.showForm = false;
-      this.registrarClick('click-submit-news');
+      this.registrarClick('click-submit-news'); // Asegúrate de que se llame este método
     });
   }
 
@@ -102,7 +102,7 @@ export class NewsComponent {
       this.newsService.deleteNews(newsId).subscribe(() => {
         this.news = this.news.filter(newsItem => newsItem._id !== newsId);
         this.filterNews(); // Filtrar noticias después de eliminar una
-        this.registrarClick('click-delete-news')
+        this.registrarClick('click-delete-news'); // Asegúrate de que se llame este método
       });
     }
   }

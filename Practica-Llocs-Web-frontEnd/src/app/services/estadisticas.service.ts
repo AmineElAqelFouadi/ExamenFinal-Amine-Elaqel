@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SessionService } from './session.service';
-import { environment } from '../../environments/environment'; // Asegúrate de tener la URL correcta
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +22,7 @@ export class EstadisticasService {
     };
 
     // Llamada al backend para registrar la visita
-    return this.http.post(`${environment.apiUrl}/api/estadisticas`, data);
+    return this.http.post(`http://localhost:3000/api/estadisticas`, data);
   }
 
   registrarClick(sitioEvento: string) {
@@ -38,14 +37,14 @@ export class EstadisticasService {
       createdAt: new Date(),
     };
 
-    return this.http.post(`${environment.apiUrl}/api/estadisticas`, data);
+    return this.http.post(`http://localhost:3000/api/estadisticas`, data); // Corregido
   }
 
   getUltimosEventos() {
-    return this.http.get(`${environment.apiUrl}/api/estadisticas/ultimos`);
+    return this.http.get(`http://localhost:3000/api/estadisticas/ultimos`);
   }
 
   getEstadisticas(filtros: any) {
-    return this.http.get(`${environment.apiUrl}/api/estadisticas`, { params: filtros });
+    return this.http.get(`http://localhost:3000/api/estadisticas`, { params: filtros });
   }
 }
