@@ -23,4 +23,9 @@ export class SessionService {
   getSessionId(): string {
     return this.sessionId;
   }
+
+
+  registerClick(): void {
+    // Lógica para registrar clics en el servicio de estadísticas
+  }
 }

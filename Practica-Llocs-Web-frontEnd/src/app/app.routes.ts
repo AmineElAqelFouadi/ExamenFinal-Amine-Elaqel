@@ -4,12 +4,18 @@ import { MonedesComponent } from './monedes/monedes.component';
 import { NewsComponent } from './news/news.component';
 import { AccountComponent } from './account/account.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
 
 export const routes: Routes = [
   {
     path:'',
     component: IniciComponent,
     title: 'Inici'
+  },
+  {
+    path:'estadisticas',
+    component: EstadisticasComponent,
+    title: 'Estadística'
   },
   {
     path:'monedes',

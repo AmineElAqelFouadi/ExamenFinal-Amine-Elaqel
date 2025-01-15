@@ -125,13 +125,13 @@ export class NewsComponent {
   }
 
   registrarVisita(sitioEvento: string) {
-    this.estadisticasService.registrarVisita(this.sessionId, this.userId, sitioEvento).subscribe(response => {
+    this.estadisticasService.registrarVisita(sitioEvento).subscribe(response => {
       console.log('Visita registrada:', response);
     });
   }
 
   registrarClick(sitioEvento: string) {
-    this.estadisticasService.registrarClick(this.sessionId, this.userId, sitioEvento).subscribe(response => {
+    this.estadisticasService.registrarClick(sitioEvento).subscribe(response => {
       console.log('Click registrado:', response);
     });
   }

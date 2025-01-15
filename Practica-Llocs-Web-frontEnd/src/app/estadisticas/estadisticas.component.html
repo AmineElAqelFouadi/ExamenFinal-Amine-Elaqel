@@ -1,1 +1,29 @@
-<p>estadisticas works!</p>
+<div>
+  <h2>Últimos Eventos</h2>
+  <div>
+    <label>Fecha Inicio:</label>
+    <input type="date" [(ngModel)]="fechaInicio">
+  </div>
+  <div>
+    <label>Fecha Final:</label>
+    <input type="date" [(ngModel)]="fechaFinal">
+  </div>
+  <div>
+    <label>Sitio Evento:</label>
+    <input type="text" [(ngModel)]="sitioEvento">
+  </div>
+  <div>
+    <label>Tipo Evento:</label>
+    <select [(ngModel)]="tipoEvento">
+      <option value="">Todos</option>
+      <option value="visita">Visita</option>
+      <option value="click">Click</option>
+    </select>
+  </div>
+  <button (click)="aplicarFiltros()">Aplicar Filtros</button>
+  <ul>
+    <li *ngFor="let evento of eventos">
+      {{ evento.createdAt }} - {{ evento.sitioEvento }} - {{ evento.tipoEvento }}
+    </li>
+  </ul>
+</div>
